@@ -1,0 +1,30 @@
+/* Mandatory Modern CSS Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+:root {
+  --bg-primary: #ffffff;
+  --text-primary: #0f172a;
+  --accent: #0284c7;
+  --card-bg: #f8fafc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #0f172a;
+    --text-primary: #f8fafc;
+    --accent: #38bdf8;
+    --card-bg: #1e293b;
+  }
+}
