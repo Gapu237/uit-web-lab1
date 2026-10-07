@@ -1,143 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Developer Portfolio</title>
+
+  <title>Au Gia Phuc - Developer Portfolio</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  <!-- =========================================
+       SKIP LINK - ACCESSIBILITY
+  ========================================== -->
 
   <a href="#main-content" class="skip-link">
     Skip to main content
   </a>
+  <!-- =========================================
+       HEADER
+  ========================================== -->
 
-  <header role="banner">
+  <header>
+
     <h1>Au Gia Phuc - Developer Portfolio</h1>
-    
-    <!-- Nút Toggle Theme -->
-    <button id="theme-btn" aria-pressed="false">Toggle Theme</button>
-    
-    <nav aria-label="Primary navigation">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main id="main-content" role="main">
+    <!-- Theme Toggle -->
+    <button
+      id="theme-btn"
+      type="button"
+      aria-pressed="false"
+      aria-label="Toggle dark mode"
+    >
+      Toggle Theme
+    </button>
+
+    <!-- Navigation -->
+    <nav aria-label="Primary navigation">
+
+      <ul>
+
+        <li>
+          <a href="#about">About</a>
+        </li>
+
+        <li>
+          <a href="#skills">Skills</a>
+        </li>
+
+        <li>
+          <a href="#projects">Projects</a>
+        </li>
+
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
+
+        <li>
+          <a href="#drum-kit">Drum Kit</a>
+        </li>
+
+        <li>
+          <a href="#countdown-section">Countdown</a>
+        </li>
+
+      </ul>
+
+    </nav>
+
+  </header>
+  <!-- =========================================
+       MAIN CONTENT
+  ========================================== -->
+
+  <main id="main-content">
+    <!-- =========================================
+         ABOUT
+    ========================================== -->
 
     <section id="about">
+
       <h2>About Me</h2>
-      <p>I am an Information Systems student interested in web development.</p>
+
+      <p>
+        I am an Information Systems student interested in web development,
+        databases, and building useful web applications.
+      </p>
+
     </section>
+    <!-- =========================================
+         SKILLS
+    ========================================== -->
 
     <section id="skills">
+
       <h2>Skills</h2>
+
       <ul>
+
         <li>HTML</li>
         <li>CSS</li>
         <li>JavaScript</li>
         <li>Git</li>
+
       </ul>
+
     </section>
+    <!-- =========================================
+         PROJECTS
+    ========================================== -->
 
     <section id="projects">
+
       <h2>Projects</h2>
-      
+
       <ul class="project-grid">
-  <li>
-    <article class="project-card">
-      <h3>Web Application Project</h3>
-      <p>A web application developed using modern HTML, CSS and JavaScript.</p>
-      <a href="#">View Project</a>
-    </article>
-  </li>
 
-  <li>
-    <article class="project-card">
-      <h3>Information System Project</h3>
-      <p>An information system designed to support business processes.</p>
-      <a href="#">View Project</a>
-    </article>
-  </li>
-</ul>
+        <li>
+
+          <article class="project-card">
+
+            <h3>Web Application Project</h3>
+
+            <p>
+              A web application developed using modern
+              HTML, CSS and JavaScript.
+            </p>
+
+            <!-- Replace # with your real project URL later -->
+            <a href="#">
+              View Project
+            </a>
+
+          </article>
+
+        </li>
+
+
+        <li>
+
+          <article class="project-card">
+
+            <h3>Information System Project</h3>
+
+            <p>
+              An information system designed to support
+              business processes.
+            </p>
+
+            <!-- Replace # with your real project URL later -->
+            <a href="#">
+              View Project
+            </a>
+
+          </article>
+
+        </li>
+
+      </ul>
+
     </section>
+    <!-- =========================================
+         CONTACT - HW1 / HW3
+    ========================================== -->
 
-    <!-- HW3: Phần Contact với Form State Machine (Đã xóa trùng lặp) -->
     <section id="contact">
+
       <h2>Contact</h2>
-     
-<section id="contact">
-  <h2>Contact</h2>
 
-  <form id="contact-form" action="#" method="POST">
-    <label for="name">Name</label>
-    <input
-      type="text"
-      id="name"
-      name="name"
-      required
-      minlength="3"
-    >
+      <form
+        id="contact-form"
+        action="#"
+        method="POST"
+      >
 
-    <label for="email">Email</label>
-    <input
-      type="email"
-      id="email"
-      name="email"
-      required
-    >
+        <!-- Name -->
 
-    <button type="submit" id="submit-btn">Send</button>
-  </form>
+        <label for="name">
+          Name
+        </label>
 
-  <p id="form-status" role="status" aria-live="polite"></p>
-</section>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          minlength="3"
+          autocomplete="name"
+        >
+        <!-- Email -->
 
-    <!-- HW2: Drum Kit Engine -->
+        <label for="email">
+          Email
+        </label>
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          autocomplete="email"
+        >
+        <!-- Submit -->
+
+        <button
+          type="submit"
+          id="submit-btn"
+        >
+          Send
+        </button>
+
+      </form>
+      <!-- Form state message -->
+
+      <p
+        id="form-status"
+        role="status"
+        aria-live="polite"
+      ></p>
+
+    </section>
+    <!-- =========================================
+         DRUM KIT - HW2
+    ========================================== -->
+
     <section id="drum-kit">
+
       <h2>Web Audio Engine (Drum Kit)</h2>
-      
-     <ul class="drum-container">
-  <li>
-    <button class="drum-pad" data-key="a" data-sound="assets/drum.mp3">
-      A (Kick)
-    </button>
-  </li>
 
-  <li>
-    <button class="drum-pad" data-key="s" data-sound="assets/snare.mp3">
-      S (Snare)
-    </button>
-  </li>
+      <ul class="drum-container">
+        <!-- Kick -->
 
-  <li>
-    <button class="drum-pad" data-key="d" data-sound="assets/hihat.mp3">
-      D (Hi-Hat)
-    </button>
-  </li>
-</ul>
+        <li>
+
+          <button
+            type="button"
+            class="drum-pad"
+            data-key="a"
+            data-sound="assets/drum.mp3"
+            aria-label="Play kick drum"
+          >
+            A (Kick)
+          </button>
+
+        </li>
+        <!-- Snare -->
+
+        <li>
+
+          <button
+            type="button"
+            class="drum-pad"
+            data-key="s"
+            data-sound="assets/snare.mp3"
+            aria-label="Play snare drum"
+          >
+            S (Snare)
+          </button>
+
+        </li>
+        <!-- Hi-Hat -->
+
+        <li>
+
+          <button
+            type="button"
+            class="drum-pad"
+            data-key="d"
+            data-sound="assets/hihat.mp3"
+            aria-label="Play hi-hat"
+          >
+            D (Hi-Hat)
+          </button>
+
+        </li>
+
+      </ul>
+
     </section>
-    
-    <!-- HW3: Countdown Engine -->
+    <!-- =========================================
+         COUNTDOWN - HW3
+    ========================================== -->
+
     <section id="countdown-section">
+
       <h2>Launch Countdown</h2>
-   <p id="countdown-timer" data-target="2027-01-01T00:00:00Z">
-  Loading...
-</p>
+
+      <p
+        id="countdown-timer"
+        data-target="2027-01-01T00:00:00Z"
+        aria-live="polite"
+      >
+        Loading...
+      </p>
+
     </section>
 
-  </main> 
 
-  <footer role="contentinfo">
-    <p>&copy; 2026 Au Gia Phuc. All rights reserved.</p>
+  </main>
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+
+  <footer>
+
+    <p>
+      &copy; 2026 Au Gia Phuc. All rights reserved.
+    </p>
+
   </footer>
+  <!-- =========================================
+       JAVASCRIPT
+  ========================================== -->
 
   <script src="script.js"></script>
+
 </body>
+
 </html>
