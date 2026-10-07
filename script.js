@@ -99,3 +99,43 @@ if (countdownElement) {
   // Cập nhật lại thời gian mỗi 1 giây (1000 mili-giây)
   setInterval(updateCountdown, 1000);
 }
+
+
+// ==========================================
+// HW3: FORM STATE MACHINE & ANTI-XSS
+// ==========================================
+
+const contactForm = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submit-btn');
+const formStatus = document.getElementById('form-status');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Chặn hành vi load lại trang mặc định
+
+    // 1. NGĂN DOUBLE-SUBMIT (SLICE 3)
+    // Khóa nút bấm ngay khi vừa nhấn để user không bấm được 2 lần
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    formStatus.textContent = '';
+    formStatus.style.color = 'inherit';
+
+    // 2. CHỐNG XSS & SANITIZATION (SLICE 3)
+    // Biến các ký tự < và > thành dạng văn bản an toàn để chống chèn mã độc HTML
+    const nameInput = document.getElementById('name').value;
+    const sanitizedName = nameInput.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+    // 3. STATE-MACHINE FORM (SLICE 2)
+    // Giả lập thời gian gửi dữ liệu lên server mất 2 giây
+    setTimeout(() => {
+      // Chuyển sang trạng thái Thành công
+      formStatus.style.color = 'green';
+      formStatus.textContent = `Thank you, ${sanitizedName}! Your message has been sent successfully.`;
+      
+      // Đưa form về trạng thái ban đầu (Idle)
+      contactForm.reset();
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send';
+    }, 2000);
+  });
+}

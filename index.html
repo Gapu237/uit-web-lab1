@@ -13,11 +13,10 @@
     Skip to main content
   </a>
 
-  <!-- Đã sửa: header chỉ chứa h1 và thanh điều hướng -->
   <header role="banner">
     <h1>Au Gia Phuc - Developer Portfolio</h1>
     
-    <!-- ĐÃ CẬP NHẬT: Thêm nút Toggle Theme với thuộc tính aria-pressed -->
+    <!-- Nút Toggle Theme -->
     <button id="theme-btn" aria-pressed="false">Toggle Theme</button>
     
     <nav aria-label="Primary navigation">
@@ -30,7 +29,6 @@
     </nav>
   </header>
 
-  <!-- Đã sửa: main bao bọc TẤT CẢ các section nội dung -->
   <main id="main-content" role="main">
 
     <section id="about">
@@ -38,7 +36,6 @@
       <p>I am an Information Systems student interested in web development.</p>
     </section>
 
-    <!-- Đã tách skills ra khỏi about -->
     <section id="skills">
       <h2>Skills</h2>
       <ul>
@@ -49,7 +46,6 @@
       </ul>
     </section>
 
-    <!-- ĐÃ CẬP NHẬT: Thêm class project-grid và project-card để nhận CSS 2D Layout -->
     <section id="projects">
       <h2>Projects</h2>
       
@@ -69,30 +65,34 @@
 
     </section>
 
-    <!-- CODE LÀM TIẾP: Phần Contact với explicit label -->
+    <!-- HW3: Phần Contact với Form State Machine (Đã xóa trùng lặp) -->
     <section id="contact">
       <h2>Contact</h2>
-      <form action="#" method="POST">
+      <form id="contact-form" action="#" method="POST">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required minlength="3">
 
         <label for="email">Email</label>
         <input type="email" id="email" name="email" required>
 
-        <button type="submit">Send</button>
+        <button type="submit" id="submit-btn">Send</button>
+        
+        <!-- Dòng chữ ẩn dùng để hiện thông báo trạng thái -->
+        <p id="form-status" style="margin-top: 1rem; font-weight: bold;"></p>
       </form>
     </section>
-    <!-- CODE LÀM TIẾP: HW2 - Drum Kit Engine -->
+
+    <!-- HW2: Drum Kit Engine -->
     <section id="drum-kit">
       <h2>Web Audio Engine (Drum Kit)</h2>
       
       <div class="drum-container" style="display: flex; gap: 1rem; padding: 1rem 0;">
-        <!-- Hợp đồng HTML: Khai báo phím (data-key) và file âm thanh (data-sound) trực tiếp -->
-<button class="drum-pad" data-key="a" data-sound="assets/drum.mp3">A (Kick)</button>
-<button class="drum-pad" data-key="s" data-sound="assets/snare.mp3">S (Snare)</button>
-<button class="drum-pad" data-key="d" data-sound="assets/hihat.mp3">D (Hi-Hat)</button>
+        <button class="drum-pad" data-key="a" data-sound="assets/drum.mp3">A (Kick)</button>
+        <button class="drum-pad" data-key="s" data-sound="assets/snare.mp3">S (Snare)</button>
+        <button class="drum-pad" data-key="d" data-sound="assets/hihat.mp3">D (Hi-Hat)</button>
       </div>
     </section>
+    
     <!-- HW3: Countdown Engine -->
     <section id="countdown-section">
       <h2>Launch Countdown</h2>
@@ -101,14 +101,12 @@
       </div>
     </section>
 
-  </main> <!-- Đóng main ở cuối nội dung -->
+  </main> 
 
-  <!-- CODE LÀM TIẾP: Thêm Footer -->
   <footer role="contentinfo">
     <p>&copy; 2026 Au Gia Phuc. All rights reserved.</p>
   </footer>
 
-  <!-- ĐÃ CẬP NHẬT: Nhúng tệp JavaScript ở cuối body -->
   <script src="script.js"></script>
 </body>
 </html>
