@@ -9,16 +9,29 @@ html {
   color-scheme: light dark;
 }
 
-body {
-  font-family: system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-}
-
+/* Khai báo Design Tokens mặc định (Chế độ sáng) */
 :root {
   --bg-primary: #ffffff;
   --text-primary: #0f172a;
   --accent: #0284c7;
   --card-bg: #f8fafc;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  /* Áp dụng biến màu sắc cho toàn bộ trang */
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Class này sẽ được JavaScript bật/tắt để ghi đè màu sắc sang chế độ tối */
+body.dark-theme {
+  --bg-primary: #0f172a;
+  --text-primary: #f8fafc;
+  --accent: #38bdf8;
+  --card-bg: #1e293b;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,7 +53,7 @@ body {
 
 .project-card {
   background: var(--card-bg);
-  border: 1px solid var(--text-primary); /* Đổi tạm thành text-primary cho có viền */
+  border: 1px solid var(--text-primary); 
   border-radius: 8px;
   padding: 1.5rem;
 }
