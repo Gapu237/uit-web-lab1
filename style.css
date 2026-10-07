@@ -13,6 +13,7 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.6;
 }
+
 :root {
   --bg-primary: #ffffff;
   --text-primary: #0f172a;
@@ -27,4 +28,19 @@ body {
     --accent: #38bdf8;
     --card-bg: #1e293b;
   }
+}
+
+/* Thêm phần giao diện Layout Grid ở đây */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--text-primary); /* Đổi tạm thành text-primary cho có viền */
+  border-radius: 8px;
+  padding: 1.5rem;
 }
