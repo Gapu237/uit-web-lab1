@@ -54,3 +54,48 @@ window.addEventListener('keydown', (event) => {
 
   playSound(event.key);
 });
+
+
+
+// ==========================================
+// HW3: DRIFT-FREE COUNTDOWN ENGINE
+// ==========================================
+
+// Tìm phần tử hiển thị đồng hồ trong HTML
+const countdownElement = document.getElementById('countdown-timer');
+
+// Đảm bảo phần tử tồn tại thì mới chạy code
+if (countdownElement) {
+  // Lấy mốc thời gian đích từ thuộc tính data-target trong HTML
+  const targetDate = new Date(countdownElement.dataset.target).getTime();
+
+  function updateCountdown() {
+    // Luôn lấy mốc thời gian thực của máy tính tại thời điểm hiện tại
+    const now = Date.now();
+    
+    // Khoảng cách từ hiện tại đến lúc ra mắt (tính bằng mili-giây)
+    const distance = targetDate - now;
+
+    // Nếu thời gian đã hết (distance <= 0) thì dừng ở số 0
+    if (distance <= 0) {
+      countdownElement.textContent = "00:00:00:00";
+      return;
+    }
+
+    // Quy đổi mili-giây ra Ngày, Giờ, Phút, Giây
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Format hiển thị luôn có 2 chữ số (VD: 09 thay vì 9)
+    countdownElement.textContent = 
+      `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  }
+
+  // Gọi hàm chạy ngay lập tức để không bị hiện chữ "Loading..."
+  updateCountdown();
+  
+  // Cập nhật lại thời gian mỗi 1 giây (1000 mili-giây)
+  setInterval(updateCountdown, 1000);
+}
