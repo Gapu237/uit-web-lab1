@@ -49,56 +49,87 @@
     <section id="projects">
       <h2>Projects</h2>
       
-      <div class="project-grid">
-        <article class="project-card">
-          <h3>Web Application Project</h3>
-          <p>A web application developed using modern HTML, CSS and JavaScript.</p>
-          <a href="#">View Project</a>
-        </article>
+      <ul class="project-grid">
+  <li>
+    <article class="project-card">
+      <h3>Web Application Project</h3>
+      <p>A web application developed using modern HTML, CSS and JavaScript.</p>
+      <a href="#">View Project</a>
+    </article>
+  </li>
 
-        <article class="project-card">
-          <h3>Information System Project</h3>
-          <p>An information system designed to support business processes.</p>
-          <a href="#">View Project</a>
-        </article>
-      </div>
-
+  <li>
+    <article class="project-card">
+      <h3>Information System Project</h3>
+      <p>An information system designed to support business processes.</p>
+      <a href="#">View Project</a>
+    </article>
+  </li>
+</ul>
     </section>
 
     <!-- HW3: Phần Contact với Form State Machine (Đã xóa trùng lặp) -->
     <section id="contact">
       <h2>Contact</h2>
-      <form id="contact-form" action="#" method="POST">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required minlength="3">
+     
+<section id="contact">
+  <h2>Contact</h2>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+  <form id="contact-form" action="#" method="POST">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      minlength="3"
+    >
 
-        <button type="submit" id="submit-btn">Send</button>
-        
-        <!-- Dòng chữ ẩn dùng để hiện thông báo trạng thái -->
-        <p id="form-status" style="margin-top: 1rem; font-weight: bold;"></p>
-      </form>
-    </section>
+    <label for="email">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+    >
+
+    <button type="submit" id="submit-btn">Send</button>
+  </form>
+
+  <p id="form-status" role="status" aria-live="polite"></p>
+</section>
 
     <!-- HW2: Drum Kit Engine -->
     <section id="drum-kit">
       <h2>Web Audio Engine (Drum Kit)</h2>
       
-      <div class="drum-container" style="display: flex; gap: 1rem; padding: 1rem 0;">
-        <button class="drum-pad" data-key="a" data-sound="assets/drum.mp3">A (Kick)</button>
-        <button class="drum-pad" data-key="s" data-sound="assets/snare.mp3">S (Snare)</button>
-        <button class="drum-pad" data-key="d" data-sound="assets/hihat.mp3">D (Hi-Hat)</button>
-      </div>
+     <ul class="drum-container">
+  <li>
+    <button class="drum-pad" data-key="a" data-sound="assets/drum.mp3">
+      A (Kick)
+    </button>
+  </li>
+
+  <li>
+    <button class="drum-pad" data-key="s" data-sound="assets/snare.mp3">
+      S (Snare)
+    </button>
+  </li>
+
+  <li>
+    <button class="drum-pad" data-key="d" data-sound="assets/hihat.mp3">
+      D (Hi-Hat)
+    </button>
+  </li>
+</ul>
     </section>
     
     <!-- HW3: Countdown Engine -->
     <section id="countdown-section">
       <h2>Launch Countdown</h2>
-      <div id="countdown-timer" data-target="2027-01-01T00:00:00Z" style="font-size: 2rem; font-weight: bold; margin: 1rem 0;">
-        Loading...
-      </div>
+   <p id="countdown-timer" data-target="2027-01-01T00:00:00Z">
+  Loading...
+</p>
     </section>
 
   </main> 
