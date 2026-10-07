@@ -17,6 +17,9 @@
   <header role="banner">
     <h1>Au Gia Phuc - Developer Portfolio</h1>
     
+    <!-- ĐÃ CẬP NHẬT: Thêm nút Toggle Theme với thuộc tính aria-pressed -->
+    <button id="theme-btn" aria-pressed="false">Toggle Theme</button>
+    
     <nav aria-label="Primary navigation">
       <ul>
         <li><a href="#about">About</a></li>
@@ -79,6 +82,17 @@
         <button type="submit">Send</button>
       </form>
     </section>
+    <!-- CODE LÀM TIẾP: HW2 - Drum Kit Engine -->
+    <section id="drum-kit">
+      <h2>Web Audio Engine (Drum Kit)</h2>
+      
+      <div class="drum-container" style="display: flex; gap: 1rem; padding: 1rem 0;">
+        <!-- Hợp đồng HTML: Khai báo phím (data-key) và file âm thanh (data-sound) trực tiếp -->
+        <button class="drum-pad" data-key="a" data-sound="kick.wav">A (Kick)</button>
+        <button class="drum-pad" data-key="s" data-sound="snare.wav">S (Snare)</button>
+        <button class="drum-pad" data-key="d" data-sound="hihat.wav">D (Hi-Hat)</button>
+      </div>
+    </section>
 
   </main> <!-- Đóng main ở cuối nội dung -->
 
@@ -87,5 +101,7 @@
     <p>&copy; 2026 Au Gia Phuc. All rights reserved.</p>
   </footer>
 
+  <!-- ĐÃ CẬP NHẬT: Nhúng tệp JavaScript ở cuối body -->
+  <script src="script.js"></script>
 </body>
 </html>
