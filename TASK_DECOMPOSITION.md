@@ -53,3 +53,15 @@
 
 ### T-03E
 - Document AI-induced defects
+
+### Task T-02A
+- Tokens & Reset (Thiết lập biến CSS và Box Model).
+
+### Task T-02B
+- Responsive Grid (Cấu trúc lưới 2D tự động bọc cột).
+### Task T-02C
+- Theme Engine (Xử lý giao diện Dark Mode bằng JS và lưu trạng thái qua localStorage).
+### HW2 - Drum Kit Engine
+- Task T-04A: Thiết lập hợp đồng HTML data-sound trước khi viết JS.
+- Task T-04B: Triển khai logic Audio Engine độc lập.
+- Task T-04C: Lắng nghe sự kiện keydown và chặn lặp phím (repeat throttling).

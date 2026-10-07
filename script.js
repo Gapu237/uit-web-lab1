@@ -22,3 +22,35 @@ themeToggle.addEventListener('click', () => {
   // Lưu trạng thái vào localStorage với khóa là 'theme'
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
+// ==========================================
+// HW2: DRUM KIT - POLYPHONIC AUDIO ENGINE
+// ==========================================
+
+function playSound(key) {
+  // Tìm phần tử HTML tương ứng dựa trên data-key
+  const pad = document.querySelector(`.drum-pad[data-key="${key.toLowerCase()}"]`);
+
+  if (!pad) return;
+
+  // Tạo một instance Audio mới mỗi lần bấm để hỗ trợ đa âm (polyphonic)
+  const audio = new Audio(pad.dataset.sound);
+  audio.play().catch((error) => {
+    console.error('Unable to play audio:', error);
+  });
+
+  // Thêm hiệu ứng khi phím được bấm
+  pad.classList.add('active');
+  setTimeout(() => pad.classList.remove('active'), 100);
+}
+
+// Phát âm khi bấm vào nút màn hình hoặc dùng bàn phím
+for (const pad of document.querySelectorAll('.drum-pad')) {
+  pad.addEventListener('click', () => playSound(pad.dataset.key));
+}
+
+window.addEventListener('keydown', (event) => {
+  // Chặn lặp lại khi giữ phím để tránh phát nhiều lần
+  if (event.repeat) return;
+
+  playSound(event.key);
+});
