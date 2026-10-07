@@ -1,35 +1,55 @@
 /* =========================================
-   1. CSS VARIABLES (BẢNG MÀU PASTEL DỄ THƯƠNG)
+   1. DESIGN TOKENS
 ========================================= */
+
 :root {
   --bg-primary: #fdf2f8;
   --bg-secondary: #ffffff;
+
   --text-primary: #4a044e;
   --text-secondary: #701a75;
+  --text-on-accent: #ffffff;
+
   --accent: #ec4899;
   --accent-hover: #db2777;
+  --accent-purple: #8b5cf6;
+
   --border-color: #fce7f3;
+
+  --accent-shadow: rgba(236, 72, 153, 0.3);
+  --focus-shadow: rgba(236, 72, 153, 0.15);
   --card-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.15);
 }
 
 body.dark-theme {
   --bg-primary: #1e1b4b;
   --bg-secondary: #2e1065;
+
   --text-primary: #fdf4ff;
   --text-secondary: #f0abfc;
+  --text-on-accent: #ffffff;
+
   --accent: #d946ef;
   --accent-hover: #e879f9;
+  --accent-purple: #a855f7;
+
   --border-color: #4c1d95;
+
+  --accent-shadow: rgba(0, 0, 0, 0.4);
+  --focus-shadow: rgba(232, 121, 249, 0.2);
   --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
 }
 
 /* =========================================
    2. RESET & BASE
 ========================================= */
-* {
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
@@ -37,43 +57,81 @@ html {
 }
 
 body {
-  font-family: 'Quicksand', 'Segoe UI', Tahoma, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================================
+   3. SKIP LINK
+========================================= */
 
 .skip-link {
   position: absolute;
   top: -50px;
   left: 10px;
-  background: var(--accent);
-  color: white;
+  z-index: 100;
+
+  background-color: var(--accent);
+  color: var(--text-on-accent);
+
   padding: 10px 20px;
   border-radius: 30px;
-  z-index: 100;
+
   text-decoration: none;
   font-weight: bold;
 }
-.skip-link:focus { top: 10px; }
+
+.skip-link:focus-visible {
+  top: 10px;
+}
 
 /* =========================================
-   3. HEADER & ĐIỀU HƯỚNG
+   4. GLOBAL KEYBOARD FOCUS
 ========================================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* =========================================
+   5. HEADER & NAVIGATION
+========================================= */
+
 header {
   background-color: var(--bg-secondary);
   padding: 1.5rem 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+
   position: sticky;
   top: 0;
   z-index: 50;
+
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 h1 {
@@ -83,34 +141,41 @@ h1 {
 }
 
 nav ul {
-  list-style: none; /* Xóa dấu chấm tròn của danh sách */
+  list-style: none;
+
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
   justify-content: center;
-  background: var(--bg-primary);
+
+  background-color: var(--bg-primary);
   padding: 10px 25px;
   border-radius: 50px;
 }
 
 nav a {
+  display: inline-block;
+
   text-decoration: none;
   color: var(--text-secondary);
   font-weight: bold;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  display: inline-block;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 nav a:hover {
   color: var(--accent);
-  transform: translateY(-3px) scale(1.1);
+  transform: translateY(-3px) scale(1.05);
 }
 
 /* =========================================
-   4. CẤU TRÚC CHÍNH & THẺ NỘI DUNG
+   6. MAIN CONTENT
 ========================================= */
+
 main {
-  max-width: 900px;
+  width: min(900px, 100%);
   margin: 0 auto;
   padding: 3rem 1.5rem;
 }
@@ -118,11 +183,14 @@ main {
 section {
   margin-bottom: 4rem;
   padding: 2.5rem;
+
   background-color: var(--bg-secondary);
-  border-radius: 25px;
-  box-shadow: var(--card-shadow);
   border: 2px solid var(--border-color);
-  transition: transform 0.3s;
+  border-radius: 25px;
+
+  box-shadow: var(--card-shadow);
+
+  transition: transform 0.3s ease;
 }
 
 section:hover {
@@ -132,37 +200,49 @@ section:hover {
 h2 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
+
   color: var(--accent);
+
   display: inline-block;
   position: relative;
 }
 
 h2::after {
   content: "✨";
+
   position: absolute;
   right: -30px;
   top: -5px;
+
   font-size: 1.2rem;
 }
 
 /* =========================================
-   5. PROJECT GRID (DỰ ÁN)
+   7. PROJECT GRID
 ========================================= */
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  list-style: none; /* Chống vỡ layout do bạn dùng thẻ ul li */
+
+  list-style: none;
 }
 
 .project-card {
+  height: 100%;
+
   padding: 2rem;
+
   border: 2px dashed var(--border-color);
   border-radius: 20px;
+
   background-color: var(--bg-primary);
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  height: 100%;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .project-card:hover {
@@ -171,95 +251,133 @@ h2::after {
   box-shadow: var(--card-shadow);
 }
 
-.project-card h3 { margin-bottom: 0.5rem; color: var(--accent); }
+.project-card h3 {
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
 
 .project-card a {
   display: inline-block;
+
   margin-top: 1rem;
   padding: 8px 16px;
+
   background-color: var(--border-color);
   color: var(--accent);
+
   text-decoration: none;
   font-weight: bold;
+
   border-radius: 50px;
-  transition: all 0.2s;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .project-card a:hover {
   background-color: var(--accent);
-  color: white;
+  color: var(--text-on-accent);
 }
 
 /* =========================================
-   6. NÚT BẤM & FORM LIÊN HỆ
+   8. BUTTONS & FORM
 ========================================= */
+
 button {
   background-color: var(--accent);
-  color: white;
+  color: var(--text-on-accent);
+
   border: none;
   padding: 0.8rem 1.8rem;
   border-radius: 50px;
+
   font-weight: bold;
   font-size: 1rem;
+
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  box-shadow: 0 4px 15px var(--accent-shadow);
 }
 
 button:hover {
   background-color: var(--accent-hover);
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
+  box-shadow: 0 8px 20px var(--accent-shadow);
 }
 
-button:active { transform: scale(0.95); }
-button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+button:active {
+  transform: scale(0.95);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
 
 #contact-form {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+
   max-width: 500px;
 }
 
 input {
   width: 100%;
+
   padding: 1rem;
+
   border: 2px solid var(--border-color);
   border-radius: 15px;
+
   background-color: var(--bg-primary);
   color: var(--text-primary);
+
   font-family: inherit;
-  transition: all 0.3s;
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 input:focus {
-  outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.15);
-  transform: translateY(-2px);
+  box-shadow: 0 0 0 4px var(--focus-shadow);
 }
 
 /* =========================================
-   7. DRUM KIT
+   9. DRUM KIT
 ========================================= */
+
 .drum-container {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
-  list-style: none; /* Cực kỳ quan trọng để fix lỗi đè chữ */
+
+  list-style: none;
 }
 
 .drum-pad {
-  font-size: 1.2rem;
-  padding: 1.5rem;
   width: 110px;
   height: 110px;
+
+  padding: 1.5rem;
+
   border-radius: 50%;
+
   background-color: var(--bg-primary);
   color: var(--accent);
+
   border: 3px solid var(--border-color);
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -268,35 +386,116 @@ input:focus {
 .drum-pad.active {
   border-color: var(--accent);
   background-color: var(--accent);
-  color: white;
+  color: var(--text-on-accent);
+
   transform: scale(0.85);
 }
 
 /* =========================================
-   8. ĐỒNG HỒ ĐẾM NGƯỢC
+   10. COUNTDOWN
 ========================================= */
+
 #countdown-timer {
-  background: linear-gradient(135deg, var(--accent), #8b5cf6, #ec4899);
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent-purple),
+    var(--accent)
+  );
+
   background-size: 200% 200%;
- -webkit-background-clip: text;
   background-clip: text;
+  -webkit-background-clip: text;
+
   -webkit-text-fill-color: transparent;
+
   text-align: center;
-  font-size: 3.5rem !important;
+  font-size: 3.5rem;
+
   animation: gradientFlow 5s ease infinite;
 }
 
 @keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
+
+/* =========================================
+   11. FORM STATUS
+========================================= */
+
+#form-status {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+/* =========================================
+   12. FOOTER
+========================================= */
 
 footer {
   text-align: center;
+
   padding: 2rem;
+
   color: var(--text-secondary);
   background-color: var(--bg-secondary);
+
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
+}
+
+/* =========================================
+   13. MOBILE - 375px
+========================================= */
+
+@media (max-width: 600px) {
+  header {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  nav ul {
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
+
+  main {
+    padding: 2rem 1rem;
+  }
+
+  section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #countdown-timer {
+    font-size: 2.2rem;
+  }
+
+  .drum-container {
+    gap: 1rem;
+  }
+
+  .drum-pad {
+    width: 90px;
+    height: 90px;
+    padding: 1rem;
+  }
 }
